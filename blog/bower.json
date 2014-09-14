@@ -1,0 +1,12 @@
+{
+  "name": "eluleci-blog",
+  "version": "0.0.0",
+  "authors": [
+    "eluleci <emrullahluleci@gmail.com>"
+  ],
+  "dependencies": {
+    "fontawesome": "*",
+    "bootstrap": "*"
+  },
+  "license": "MIT"
+}

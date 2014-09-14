@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tech Tutorials</title>
+    <description>This web site contains tutorials about frontend, backend and mobile development.
+</description>
+    <link>http://eluleci.github.io/</link>
+    <atom:link href="http://eluleci.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 15 Sep 2014 00:59:19 +0300</pubDate>
+    <lastBuildDate>Mon, 15 Sep 2014 00:59:19 +0300</lastBuildDate>
+    <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>Using AngularJS Controllers</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;You can find the whole project on its &lt;a href=&quot;https://github.com/eluleci/web-tutorial-project&quot;&gt;GitHub&lt;/a&gt; repository and
+final state of this post is saved in
+&lt;a href=&quot;https://github.com/eluleci/web-tutorial-project/tree/2-using-angular-controller&quot;&gt;this branch&lt;/a&gt;
+of the repository.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this post we’ll create an Angular controller. But before starting creating the files I want to mention to the
+folder structure of the project.&lt;/p&gt;
+
+&lt;h4&gt;Folder Structure&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;err&quot;&gt;root/&lt;/span&gt;
+  &lt;span class=&quot;err&quot;&gt;app/&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;features/&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;app.js&lt;/span&gt;
+  &lt;span class=&quot;err&quot;&gt;bower_components/...&lt;/span&gt;
+  &lt;span class=&quot;err&quot;&gt;bower.json&lt;/span&gt;
+  &lt;span class=&quot;err&quot;&gt;index.html&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;root/:&lt;/strong&gt; Contains the configuration files and index.html.&lt;br /&gt;
+&lt;strong&gt;root/app/:&lt;/strong&gt; Contains main js and style files of the project.&lt;br /&gt;
+&lt;strong&gt;root/app/features:&lt;/strong&gt;  Contains files of Angular controllers and directives with their js, css and html-templates.&lt;br /&gt;
+&lt;strong&gt;root/bower_components:&lt;/strong&gt;  Contains the libraries (packages) downloaded by bower.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4&gt;Creating Angular Module&lt;/h4&gt;
+&lt;p&gt;First create a JavaScript file called &lt;strong&gt;app.js&lt;/strong&gt; in app folder. Into the file add this code and save it.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// defining the app module of the project&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tutorialProject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;tutorialApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This one line of code initialises the Angular Module of our app. Now create the
+&lt;strong&gt;index.html&lt;/strong&gt; file and insert &lt;strong&gt;angular.js&lt;/strong&gt; (which we downloaded with bower in
+&lt;a href=&quot;/angularjs/2014/09/14/installing-bower.html&quot;&gt;previous post&lt;/a&gt;)
+and &lt;strong&gt;app.js&lt;/strong&gt; to it. Then add this &lt;code&gt;ng-app=&quot;tutorialApp&quot;&lt;/code&gt;
+attribute to &lt;strong&gt;html&lt;/strong&gt; node. Adding this attribute initialises the Angular Module that we created inside the &lt;strong&gt;app.js&lt;/strong&gt;.
+At this point your &lt;strong&gt;index.html&lt;/strong&gt; should look like this.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html PUBLIC &amp;quot;-//W3C//DTD XHTML 1.0 Strict//EN&amp;quot; &amp;quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-app=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tutorialApp&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;content-type&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/html;charset=utf-8&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Angular Tutorial Project&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;bower_components/angular/angular.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;app/app.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Try to open the page with any browser. You’ll not see anything but also you shouldn’t be seeing any errors.&lt;/p&gt;
+
+&lt;h4&gt;Creating Angular Controller&lt;/h4&gt;
+&lt;p&gt;Now we’ll create the first Angular controller. Open the &lt;strong&gt;app.js&lt;/strong&gt; file and append this code.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// defining a root controller&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;tutorialProject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;RootController&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;$scope&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// defining local variable (not accessible from outside)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someVariable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;You cannot access me from html!&amp;quot;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// defining variable in scope&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello World!&amp;quot;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// defining function in scope&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;greet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Welcome dude!&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;For creating a controller we call the &lt;strong&gt;.controller()&lt;/strong&gt; function of the &lt;strong&gt;tutorialProject&lt;/strong&gt; object which is our module
+object. First parameter is the name of the controller and the second one is an array which contains the dependencies
+for injection and also the controller function. There are some variables and functions defined in the controller. As you
+see in the comments if you create a variable in the injected object you can reach it from any place that has this scope
+object (like from html).&lt;/p&gt;
+
+&lt;p&gt;Now we need to insert &lt;strong&gt;RootController&lt;/strong&gt; to &lt;strong&gt;index.html&lt;/strong&gt; like we added the module. Add &lt;code&gt;ng-controller=&quot;RootController&quot;&lt;/code&gt;
+attribute to &lt;code&gt;body&lt;/code&gt; and add these lines inside body before inserting scripts.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;greet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()}}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now refresh the &lt;strong&gt;index.html&lt;/strong&gt; from the browser. You should see both of the messages. If you want to render the messages
+better you can use html tags around them. Final look of the &lt;strong&gt;index.html&lt;/strong&gt; should be like this.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html PUBLIC &amp;quot;-//W3C//DTD XHTML 1.0 Strict//EN&amp;quot; &amp;quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-app=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tutorialApp&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;content-type&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/html;charset=utf-8&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Angular Tutorial Project&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-controller=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;RootController&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- using scope variable --&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;{{message}}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- using scope function --&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;{{greet()}}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;bower_components/angular/angular.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;app/app.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s it. In the next post we’ll get data from an API and show them in &lt;strong&gt;index.html&lt;/strong&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 15 Sep 2014 00:27:00 +0300</pubDate>
+        <link>http://eluleci.github.io/angularjs/2014/09/15/using-angular-controller.html</link>
+        <guid isPermaLink="true">http://eluleci.github.io/angularjs/2014/09/15/using-angular-controller.html</guid>
+        
+        
+        <category>angularjs</category>
+        
+      </item>
+    
+      <item>
+        <title>Installing Bower to Download AngularJS</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;You can find the whole project on its &lt;a href=&quot;https://github.com/eluleci/web-tutorial-project&quot;&gt;GitHub&lt;/a&gt; repository and
+final state of this post is saved in
+&lt;a href=&quot;https://github.com/eluleci/web-tutorial-project/tree/1-initialising-bower&quot;&gt;this branch&lt;/a&gt;
+of the repository.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Bower is used for managing dependencies and packages. Its logic is really simple. The dependency information
+is kept in a json file and bower downloads them when needed. If you use bower you also don’t need to keep
+the packages in your projects’ VCS repositories so they’ll be more lightweight than ever.&lt;/p&gt;
+
+&lt;h4&gt; Installing bower &lt;/h4&gt;
+&lt;p&gt;For installing bower you should have &lt;a href=&quot;http://nodejs.org/&quot;&gt;Node and npm&lt;/a&gt; installed in your computer. Then you
+just simply execute the command &lt;code&gt;npm install -g bower&lt;/code&gt; to install bower.&lt;/p&gt;
+
+&lt;h4&gt; Installing packages with bower &lt;/h4&gt;
+&lt;p&gt;After bower is installed you are ready to install the packages with bower. There are several ways to install
+packages such as;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;registered package in bowers system&lt;br /&gt;
+&lt;code&gt;bower install angular&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;GitHub shorthand for url https://github.com/angular/angular.js&lt;br /&gt;
+&lt;code&gt;bower install angular/angular.js&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Git endpoint for angular&lt;br /&gt;
+&lt;code&gt;bower install git@github.com:angular/angular.js.git&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;URL&lt;br /&gt;
+&lt;code&gt;bower install http://example.com/script.js&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But we are not going to use none of these to download angularjs. We’ll create a &lt;strong&gt;bower.json&lt;/strong&gt; file and continue
+with it.&lt;/p&gt;
+
+&lt;h4&gt; Creating bower.json file &lt;/h4&gt;
+&lt;p&gt;Now navigate to your project’s root folder and run the command &lt;code&gt;bower init&lt;/code&gt;. You’ll be asked some questions.
+Don’t worry while answering them because the only thing that this command does is creating a &lt;strong&gt;bower.json&lt;/strong&gt;
+file with the answers of yours.&lt;/p&gt;
+
+&lt;p&gt;After the &lt;strong&gt;bower.json&lt;/strong&gt; file is created open it. It should look like this. I removed some unnecessary parts
+from my &lt;strong&gt;bower.json&lt;/strong&gt; file and added angularjs to dependencies.&lt;/p&gt;
+
+&lt;p&gt;Dependencies contain two information of the package; name and version. When you want to add a package to bower
+you can search packages from &lt;a href=&quot;http://bower.io/search/?q=angular&quot;&gt;bower’s search page&lt;/a&gt; and find their information.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;tutorial-project-web&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.0.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;authors&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;eluleci &amp;lt;emrullahluleci@gmail.com&amp;gt;&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;dependencies&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;angular&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1.2.3&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;license&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;MIT&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;homepage&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;index.html&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Downloading AngularJS package&lt;/h4&gt;
+&lt;p&gt;Since that AngularJS is declared as a dependency in &lt;strong&gt;bower.json&lt;/strong&gt; file we can simply run the command
+&lt;code&gt;bower install&lt;/code&gt; to download AngularJS package. After the download finishes you’ll see that there’ll be a
+&lt;strong&gt;‘bower_components’&lt;/strong&gt; folder created in the root folder. So when we want to use AngularJS in our project
+we’ll add the AngularJS file path (bower_components/angular/angular.min.js) to our index.html.&lt;/p&gt;
+
+&lt;p&gt;That’s it.&lt;/p&gt;
+
+&lt;p&gt;In the next post we’ll initialise the AngularJS in our project.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 14 Sep 2014 22:00:00 +0300</pubDate>
+        <link>http://eluleci.github.io/angularjs/2014/09/14/installing-bower.html</link>
+        <guid isPermaLink="true">http://eluleci.github.io/angularjs/2014/09/14/installing-bower.html</guid>
+        
+        
+        <category>angularjs</category>
+        
+      </item>
+    
+      <item>
+        <title>AngularJS Tutorial Project Intro</title>
+        <description>&lt;p&gt;In this AngularJS Tutorial I am going to tell you how to build an AngularJS Web Application from scratch.
+It will contain examples about many of the mostly used AngularJS components such as controllers, directives,
+services etc.&lt;/p&gt;
+
+&lt;p&gt;While developing this web site I’ll also use some other tools such as &lt;strong&gt;bower&lt;/strong&gt; for package
+management, &lt;strong&gt;bootstrap&lt;/strong&gt; for css templates and grid system, &lt;strong&gt;less&lt;/strong&gt; for style sheets and &lt;strong&gt;grunt&lt;/strong&gt;
+for code minification. So it will not be only an AngularJS tutorial but it will be a complete guide for
+creating a web site from development to production. For quick introduction, I want to explain all of these shortly
+at the end of the page.&lt;/p&gt;
+
+&lt;p&gt;In parallel, I’ll also create a backend for this website with Go language with Google App Engine(GAE) and
+it will be another tutorial which is connected with this tutorial.&lt;/p&gt;
+
+&lt;p&gt;The source code of the tutorials (for each post) will be kept on this &lt;a href=&quot;https://github.com/eluleci/web-tutorial-project&quot;&gt;GitHub&lt;/a&gt;
+repository under its own branch. So you’ll be able to see the development step by step.&lt;/p&gt;
+
+&lt;h3&gt;Frameworks and Tools&lt;/h3&gt;
+&lt;h5&gt;AngularJS&lt;/h5&gt;
+&lt;p&gt;AngularJS is a Javascript Web Application framework. It makes DOM manipulation and two-way data binding too easy.
+If you’ve created web sites with PHP or Python you know how hard it is to manage the content dynamically.
+Once you render the page, you need to create Javascript for making AJAX requests and handling the DOMs. But with
+AngularJS you’re rendering the page already with Javascript so it becomes really easy to handle dynamic changes.&lt;/p&gt;
+
+&lt;h5&gt;Bower&lt;/h5&gt;
+&lt;p&gt;Bower is a web optimised package-dependency management system. It keeps info of the dependencies and lets you download
+them when needed.&lt;/p&gt;
+
+&lt;h5&gt;Bootstrap&lt;/h5&gt;
+&lt;p&gt;Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.&lt;/p&gt;
+
+&lt;h5&gt;Less&lt;/h5&gt;
+&lt;p&gt;Less is a CSS pre-processor, meaning that it extends the CSS language, adding features that allow variables, mixins,
+functions and many other techniques that allow you to make CSS that is more maintainable, themable and extendable.&lt;/p&gt;
+
+&lt;h5&gt;Grunt&lt;/h5&gt;
+&lt;p&gt;Grunt automates the processes like code minification, compilation, unit testing, linting, etc.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 14 Sep 2014 21:00:00 +0300</pubDate>
+        <link>http://eluleci.github.io/angularjs/2014/09/14/angular-tutorial-project.html</link>
+        <guid isPermaLink="true">http://eluleci.github.io/angularjs/2014/09/14/angular-tutorial-project.html</guid>
+        
+        <category>angularjs,</category>
+        
+        <category>bower,</category>
+        
+        <category>bootstrap,</category>
+        
+        <category>less,</category>
+        
+        <category>grunt</category>
+        
+        
+        <category>angularjs</category>
+        
+      </item>
+    
+  </channel>
+</rss>
