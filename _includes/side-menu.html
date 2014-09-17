@@ -1,0 +1,32 @@
+<nav class="side-menu">
+
+  <ul class="category-icon-list">
+    <li>
+      <img class="category-icon" src="/img/icon-angularjs.png"/>
+    </li>
+  </ul>
+
+  <ul class="category-list">
+
+    <li class="category" category="angularjs">
+      AngularJS
+    </li>
+  </ul>
+
+  <ul class="angularjs post-list has-transition">
+    {% for post in site.categories.angularjs reversed %}
+    <li>
+      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <!--
+    <h2>AngularJS</h2>
+    <ul class="post-list">
+      {% for post in site.categories.angularjs %}
+      <li>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>-->
+</nav>
