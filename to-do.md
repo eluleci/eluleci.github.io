@@ -1,0 +1,11 @@
+- ~~Initialising AngularJS App~~
+- Controller Example
+- get movie list (controller, http call)
+- show movie list (ng-repeat)
+- optimise movie list row (directive)
+- movie page (routing)
+- getting movie data (service, promise)
+- showing movie page when data loaded (resolve)
+- login with facebook (controller)
+- saving user session data (cookie)
+- share with ´facebook´
