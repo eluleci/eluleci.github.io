@@ -1,8 +1,10 @@
-- ~~Initialising AngularJS App~~
-- Controller Example
-- get movie list (controller, http call)
-- show movie list (ng-repeat)
+- ~~initialising AngularJS app~~
+- ~~using Angular controller~~
+- ~~get movie list (controller, http call)~~
+- ~~show movie list (ng-repeat)~~
+- ___using bootstrap for grid system and styling
 - optimise movie list row (directive)
+- ___using less for styling
 - movie page (routing)
 - getting movie data (service, promise)
 - showing movie page when data loaded (resolve)
