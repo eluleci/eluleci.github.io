@@ -13,7 +13,7 @@ of the repository.
 
 In this post we'll see how we can make http get calls with AngularJS. For making the tutorial more interesting I am
 going to continue with [The Movie Database API](http://docs.themoviedb.apiary.io/). We'll use a lot more from this API
-during the tutorial but today we'll only show a list of up coming movies.
+during the tutorial but today we'll only show a list of popular movies.
 
 <h4>Creating a controller for getting Movie List</h4>
 
@@ -21,13 +21,13 @@ The first thing that I am going to do is creating a new controller. We'll follow
 Now create a folder called **popular-movie-list** inside the **app/feature/** folder. Then create a JavaScript file
 with the same name **popular-movie-list.js**.
 
-Inside the **popular-movie-list.js** create a controller called **UpcomingMovieListController** as we did in the
+Inside the **popular-movie-list.js** create a controller called **PopularMovieListController** as we did in the
 previous post. The only difference here is that we don't need to create an app module here because we already created
 one. So now we can reference that module object directly and create the controller.
 
 {% highlight javascript %}
 // defining popular movie list controller
-tutorialProject.controller('UpcomingMovieListController', ['$scope', '$http',
+tutorialProject.controller('PopularMovieListController', ['$scope', '$http',
     function ($scope, $http) {
 
     }]
@@ -70,7 +70,7 @@ Since that we can get the movie list now, we can print them in the page. Open th
  * insert the **popular-movie-list.js** into the **index.html** file
  * remove the things inside the **<body>** (that we added in previous post)
  * create a div in **<body>**
- * add **UpcomingMovieListController** to that div
+ * add **PopularMovieListController** to that div
 
 and **<body>** should look like this:
 
@@ -78,7 +78,7 @@ and **<body>** should look like this:
 {% raw %}
 <body ng-controller="RootController">
 
-<div ng-controller="UpcomingMovieListController">
+<div ng-controller="PopularMovieListController">
   // place to print the movie list
 </div>
 
@@ -96,7 +96,7 @@ movie list to console so you can check the data format of movies.
 Now we are going to print the movies into the page. We'll use ´ngRepeat´ directive for that. I didn't mention what is
 directive in AngularJS yet but we'll simply use this directive here to print the list easily. ´ngRepeat´ instantiates a
 template for each item in a collection. For printing our movie list, put this code snippet into the
-**PopularMovieListController** **div**.
+**PopularMovieListController** div.
 
 {% highlight html %}
 {% raw %}
@@ -109,7 +109,7 @@ template for each item in a collection. For printing our movie list, put this co
 
 What this code does is iterating through all items inside the **movieList** array and generating the div which holds the
 **ng-repeat** attribute. The array object we use here is the array that we initialised inside the
-**UpcomingMovieListController** and accessing from the html page is the reason of putting the **movieList** object into
+**PopularMovieListController** and accessing from the html page is the reason of putting the **movieList** object into
 **$scope**.
 
 When you refresh the page you'll see an ugly list <small>(don't worry we'll stylise the whole website in next posts and it will
@@ -117,7 +117,7 @@ be awesome)</small> of movies which consists of the titles and the posters of th
 You can check the other information inside the movie objects and print some other data too.
 
 <h4>Paginating the movie list</h4>
-Until here you've learned the main idea of this post. But it is better to finish this page after adding pagination.
+Until here you've learned the main idea of this post. But it is better to finish this post after adding pagination.
 I'll quickly tell that how you can paginate the movie list.
 
 We'll use a button at the end of the page to load the next page but there is a library called [ngInfiniteScroll](https://github.com/sroze/ngInfiniteScroll)
@@ -172,7 +172,7 @@ The changes we made are:
 * saving the page number to **page** variable when data loaded
 * adding the new set of movies to the existing movie list
 
-Now we need to call this method from a button in the **index.html**. Add a button inside the
+Now we need to call **getMovieList** method from a button in the **index.html**. Add a button inside the
 **PopularMovieListController** after the list and put the attribute **ng-click="getMovieList()"** on it. **ngClick** is
 another AngularJS directive which works same as **onclick** of JavaScript but this can only be used for the methods in
 the **$scope**.
