@@ -5,7 +5,7 @@
     "eluleci <emrullahluleci@gmail.com>"
   ],
   "dependencies": {
-    "fontawesome": "*",
+    "jquery": "*",
     "bootstrap": "*"
   },
   "license": "MIT"

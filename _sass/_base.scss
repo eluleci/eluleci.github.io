@@ -9,41 +9,12 @@ dl, dd, ol, ul, figure {
 }
 
 
-
-/**
- * Basic styling
- */
-body {
-    font-family: $base-font-family;
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-    font-weight: 300;
-    color: $text-color;
-    background-color: $background-color;
+.has-transition {
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
-
-
-
-/**
- * Set `margin-bottom` to maintain vertycal rhythm
- */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
-    margin-bottom: $spacing-unit / 2;
-}
-
-
-
-/**
- * Images
- */
-img {
-    max-width: 100%;
-    vertical-align: middle;
-}
-
 
 
 /**
@@ -58,10 +29,10 @@ figcaption {
 }
 
 
-
 /**
  * Lists
  */
+
 ul, ol {
     margin-left: $spacing-unit;
 }
@@ -74,51 +45,18 @@ li {
 }
 
 
-
-/**
- * Headings
- */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
-}
-
-
-
-/**
- * Links
- */
-a {
-    color: $brand-color;
-    text-decoration: none;
-
-    &:visited {
-        color: darken($brand-color, 15%);
-    }
-
-    &:hover {
-        color: $text-color;
-        text-decoration: underline;
-    }
-}
-
-
-
 /**
  * Blockquotes
  */
 blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
-    padding-left: $spacing-unit / 2;
+    border-left: 4px solid $brand-color !important;
     font-size: 18px;
-    letter-spacing: -1px;
     font-style: italic;
 
     > :last-child {
         margin-bottom: 0;
     }
 }
-
 
 
 /**
@@ -148,7 +86,6 @@ pre {
 }
 
 
-
 /**
  * Wrapper
  */
@@ -165,10 +102,9 @@ pre {
         max-width: -webkit-calc(800px - (#{$spacing-unit}));
         max-width:         calc(800px - (#{$spacing-unit}));
         padding-right: $spacing-unit / 2;
-        padding-left: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2 + 55;
     }
 }
-
 
 
 /**
@@ -182,7 +118,6 @@ pre {
         clear: both;
     }
 }
-
 
 
 /**

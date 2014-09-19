@@ -5,3 +5,4 @@ bower_components
 */.idea
 npm-debug.log
 feed.xml
+.sass-cache/

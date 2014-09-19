@@ -1,12 +1,12 @@
-<nav class="side-menu">
+<nav class="side-menu clearfix">
 
-  <ul class="category-icon-list">
+  <ul class="category-icon-list has-transition">
     <li>
       <img class="category-icon" src="/img/icon-angularjs.png"/>
     </li>
   </ul>
 
-  <ul class="category-list">
+  <ul class="category-list has-transition">
 
     <li class="category" category="angularjs">
       AngularJS
@@ -20,13 +20,7 @@
     </li>
     {% endfor %}
   </ul>
-  <!--
-    <h2>AngularJS</h2>
-    <ul class="post-list">
-      {% for post in site.categories.angularjs %}
-      <li>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </li>
-      {% endfor %}
-    </ul>-->
 </nav>
+<div class="close-trigger">
+
+</div>
