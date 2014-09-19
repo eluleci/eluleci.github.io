@@ -8,7 +8,7 @@ author: "Emrullah Lüleci"
 
 > You can find the whole project on its [GitHub](https://github.com/eluleci/web-tutorial-project) repository and
 final state of this post is saved in
-[this branch](https://github.com/eluleci/web-tutorial-project/tree/3-getting-data-angular-http)
+[this branch](https://github.com/eluleci/web-tutorial-project/tree/4-using-angular-directive)
 of the repository.
 
 In this post we'll learn how to use directives in AngularJS. We'll create a directive for the movie rows that we printed
