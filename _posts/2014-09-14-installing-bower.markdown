@@ -6,10 +6,12 @@ categories: angularjs
 author: "Emrullah Lüleci"
 ---
 
-> You can find the whole project on its [GitHub](https://github.com/eluleci/web-tutorial-project) repository and
-final state of this post is saved in
+> In this tutorial series each post adds new features to the **Web Tutorial Project** which has a
+[GitHub repository](https://github.com/eluleci/web-tutorial-project) that you can find the latest code always.
+Each post has its' own branch. So the final code of this post is saved in
 [this branch](https://github.com/eluleci/web-tutorial-project/tree/1-initialising-bower)
-of the repository.
+of the repository. Also you can
+[download this post's files from here](https://github.com/eluleci/web-tutorial-project/archive/1-initialising-bower.zip).
 
 Bower is used for managing dependencies and packages. Its logic is really simple. The dependency information
 is kept in a json file and bower downloads them when needed. If you use bower you also don't need to keep

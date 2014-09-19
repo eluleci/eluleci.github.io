@@ -6,10 +6,12 @@ categories: angularjs
 author: "Emrullah Lüleci"
 ---
 
-> You can find the whole project on its [GitHub](https://github.com/eluleci/web-tutorial-project) repository and
-final state of this post is saved in
+> In this tutorial series each post adds new features to the **Web Tutorial Project** which has a
+[GitHub repository](https://github.com/eluleci/web-tutorial-project) that you can find the latest code always.
+Each post has its' own branch. So the final code of this post is saved in
 [this branch](https://github.com/eluleci/web-tutorial-project/tree/4-using-angular-directive)
-of the repository.
+of the repository. Also you can
+[download this post's files from here](https://github.com/eluleci/web-tutorial-project/archive/4-using-angular-directive.zip).
 
 In this post we'll learn how to use directives in AngularJS. We'll create a directive for the movie rows that we printed
 in the [previous post](/blog/angularjs/2014/09/17/getting-data-angular-http.html).

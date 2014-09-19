@@ -6,10 +6,12 @@ categories: angularjs
 author: "Emrullah Lüleci"
 ---
 
-> You can find the whole project on its [GitHub](https://github.com/eluleci/web-tutorial-project) repository and
-final state of this post is saved in
+> In this tutorial series each post adds new features to the **Web Tutorial Project** which has a
+[GitHub repository](https://github.com/eluleci/web-tutorial-project) that you can find the latest code always.
+Each post has its' own branch. So the final code of this post is saved in
 [this branch](https://github.com/eluleci/web-tutorial-project/tree/3-getting-data-angular-http)
-of the repository.
+of the repository. Also you can
+[download this post's files from here](https://github.com/eluleci/web-tutorial-project/archive/3-getting-data-angular-http.zip).
 
 In this post we'll see how we can make http get calls with AngularJS. For making the tutorial more interesting I am
 going to continue with [The Movie Database API](http://docs.themoviedb.apiary.io/). We'll use a lot more from this API
