@@ -2,8 +2,8 @@
 - ~~using Angular controller~~
 - ~~get movie list (controller, http call)~~
 - ~~show movie list (ng-repeat)~~
+- ~~optimise movie list row (directive)~~
 - ___using bootstrap for grid system and styling
-- optimise movie list row (directive)
 - ___using less for styling
 - movie page (routing)
 - getting movie data (service, promise)
