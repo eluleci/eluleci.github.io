@@ -14,6 +14,7 @@
   </ul>
 
   <ul class="angularjs post-list has-transition">
+    <div class="close-button"></div>
     {% for post in site.categories.angularjs reversed %}
     <li>
       <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

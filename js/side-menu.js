@@ -5,11 +5,11 @@ $(function () {
   var categoryList = $('.category-list');
   var closeTrigger = $('.close-trigger');
 
-  categoryIconList.on('mouseenter', function() {
+  categoryIconList.on('mouseenter', function () {
 
-    if(!isMenuOpen) {
+    if (!isMenuOpen) {
       categoryList.css('display', 'block')
-      setTimeout(function() {
+      setTimeout(function () {
         categoryList.addClass('selected')
       }, 1);
 
@@ -24,40 +24,37 @@ $(function () {
     var previouslySelectedItem = $('.category-list .selected')
     var newSelectedItem = $('.' + $(this).attr('category'))
 
-    /*if (newSelectedItem.hasClass('selected')) {
-      newSelectedItem.removeClass('selected')
-      setTimeout(function() {
-        newSelectedItem.css('display', 'none')
-      }, 300);
-    } else {*/
-      newSelectedItem.css('display', 'block')
-      setTimeout(function() {
-        newSelectedItem.addClass('selected')
-      }, 1);
-      /*newSelectedItem.on('mouseleave', function() {
-        $(this).removeClass('selected');
-      })*/
-      previouslySelectedItem.removeClass('selected')
-    //}
+    newSelectedItem.css('display', 'block')
+    setTimeout(function () {
+      newSelectedItem.addClass('selected')
+    }, 1);
+    previouslySelectedItem.removeClass('selected')
 
   })
 
-  closeTrigger.on('mouseenter', function() {
-
+  var closeMenu = function () {
     categoryIconList.removeClass('selected')
 
     categoryList.removeClass('selected');
-    setTimeout(function() {
+    setTimeout(function () {
       categoryList.css('display', 'none')
     }, 300);
 
     var currentSelectedItem = $('.post-list.selected')
     currentSelectedItem.removeClass('selected');
-    setTimeout(function() {
+    setTimeout(function () {
       currentSelectedItem.css('display', 'none')
     }, 300);
 
     closeTrigger.css('display', 'none')
+  }
+
+  $('.close-button').on('click', function () {
+    closeMenu();
+  })
+
+  closeTrigger.on('mouseenter', function () {
+    closeMenu();
   })
 
 });
