@@ -9,9 +9,9 @@ author: "Emrullah Lüleci"
 > In this tutorial series each post adds new features to the **Web Tutorial Project** which has a
 [GitHub repository](https://github.com/eluleci/web-tutorial-project) that you can find the latest code always.
 Each post has its' own branch. So the final code of this post is saved in
-[this branch](https://github.com/eluleci/web-tutorial-project/tree/4-using-angular-directive)
+[this branch](https://github.com/eluleci/web-tutorial-project/tree/5-using-bootstrap)
 of the repository. Also you can
-[download this post's files from here](https://github.com/eluleci/web-tutorial-project/archive/4-using-angular-directive.zip).
+[download this post's files from here](https://github.com/eluleci/web-tutorial-project/tree/5-using-bootstrap.zip).
 
 In this post we'll import [Twitter Bootstrap](http://getbootstrap.com/) to our website. We'll only use
 [its grid system](http://getbootstrap.com/css/#grid) today but we'll use its other components later on.
